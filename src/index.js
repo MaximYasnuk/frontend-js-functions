@@ -1,23 +1,28 @@
-﻿
-function min (arr){
-    if(arr===undefined){
+﻿function min(arr) {
+    if (arr === undefined) {
         return;
-    } else{
-        var minimum=arr[0];
-        var index=0;
-        for(index;index<arr.length;index+=1) {
+    } else {
+        var index = 0;
+        var minimal = null;
+        do {
+            index += 1;
             if (typeof (arr[index]) == 'number') {
-                if (minimum === undefined) {
-                    minimum = arr[index];
-                    continue;
-                }
-                if (arr[index] <= minimum) {
-                    minimum = arr[index]
-                }
+                minimal = (arr[index]);
+                break;
             }
+        } while (index < arr.length);
+        if (minimal !== null) {
+            for (index + 1; index < arr.length; index += 1) {
+                if (arr[index] < minimal && typeof(arr[index]) == 'number')
+                    minimal = arr[index]
+
+            }
+
+        } else {
+            return;
         }
+        return (minimal);
     }
-    return minimum;
 }
 
 function max(arr){
@@ -27,7 +32,7 @@ function max(arr){
         var maximum=arr[0];
         var index=0;
         for(index;index<arr.length;index+=1){
-            if(arr[index]>=maximum)
+            if(arr[index]>=maximum && typeof(arr[index]) == 'number')
                 maximum=arr[index]
         }
         return maximum;
@@ -41,9 +46,9 @@ function sum(){
         var summ=0;
         var index=0;
         for(index;index<arguments.length;index+=1){
-            if(typeof arguments[index] !== 'number')
-                continue;
-            summ+=arguments[index];
+            if(typeof arguments[index] == 'number') {
+                summ += arguments[index];
+            }
         }
         return summ;
     }
